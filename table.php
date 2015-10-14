@@ -21,6 +21,11 @@
 ?>
 
 <h2>Tabel</h2>
+
+<form action="table.php" method="get" >
+	<input type="search" name="keyword">
+	<input type="submit">
+</form>
 <table border=1 >
 	<tr>
 		<th>id</th>
@@ -62,7 +67,7 @@
 				echo "<td>".$array_of_cars[$i]->user_id."</td>";
 				echo "<td><a href=' ?delete=".$array_of_cars[$i]->id."'>X</a></td>";
 				echo "<td><a href=' ?edit=".$array_of_cars[$i]->id."'>edit</a></td>";
-				echo "<td><a href=' ?edit.php?edit_id=".$array_of_cars[$i]->id."'>edit.php</a></td>";
+				echo "<td><a href=' edit.php?edit_id=".$array_of_cars[$i]->id."'>edit.php</a></td>";
 				echo "</tr>";
 				
 			}
