@@ -9,9 +9,15 @@
 		
 		
 	}
-
-	$array_of_cars = getCarData();
 	
+	//$keyword = "";
+	if(isset($_GET["keyword"])){
+		$keyword = $_GET["keyword"];
+		$array_of_cars = getCarData($keyword);
+	}else{
+	
+		$array_of_cars = getCarData();
+	}
 	
 	//echo $array_of_cars[0]->id."".$array_of_cars[0]->plate;
 	

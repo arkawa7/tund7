@@ -3,11 +3,23 @@
 	require_once("../configglobal.php");
 	$database = "if15_arkadi_3";
 	
-	function getCarData(){
+	function getCarData($keyword=""){
+		
+		$search = "%%";
+		
+		if($keyword == ""){
+			
+			echo "Ei otsi";
+		}else{
+			
+			echo "Otsin".$keyword;
+			$serch = "%".$keyword;
+		}
 		
 		$mysqli = new mysqli($GLOBALS["servername"], $GLOBALS["server_username"], $GLOBALS["server_password"], $GLOBALS["database"]);
 		
-		$stmt = $mysqli->prepare("SELECT id, user_id, number_plate, color from car_plates WHERE deleted is NULL");
+		$stmt = $mysqli->prepare("SELECT id, user_id, number_plate, color from car_plates WHERE deleted is NULL AND (number_plate LIKE ? OR color LIKE ?)");
+		$stmt->bind_param("ss", $search, $search);
 		$stmt->bind_result($id, $user_id_from_database, $number_plate, $color);
 		$stmt->execute();
 		
